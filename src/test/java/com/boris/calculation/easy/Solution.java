@@ -3,10 +3,7 @@ package com.boris.calculation.easy;
 import com.boris.calculation.util.JsonUtil;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
