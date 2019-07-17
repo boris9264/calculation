@@ -20,10 +20,10 @@ public class AddTwoNumbersTest {
         l1.next = new ListNode(4);
         l1.next.next = new ListNode(3);
 
-        l2 = new ListNode(7);
+        l2 = new ListNode(5);
         l2.next = new ListNode(6);
         l2.next.next = new ListNode(4);
-        l2.next.next.next = new ListNode(4);
+        l2.next.next.next = new ListNode(1);
         System.out.println(JsonUtil.toString(l1));
 
         System.out.println(JsonUtil.toString(l2));
@@ -31,42 +31,37 @@ public class AddTwoNumbersTest {
 
     @Test
     public void run() {
-        ListNode result = this.addTwoNumbers(l1, l2);
-        System.out.println(JsonUtil.toString(result));
-    }
-
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode result = new ListNode(0);
-        ListNode cur = result;
-        int jinwei = 0;
-
-        while (l1!=null || l2!=null) {
-            int l1CurVal = l1!=null?l1.val:0;
-            int l2CurVal = l2!=null?l2.val:0;
-            int curSum = l1CurVal+l2CurVal;
-            if (l1CurVal+l2CurVal>=10) {
-                jinwei = 1;
-                curSum -= 10;
-            } else {
-                jinwei = 0;
-            }
-            cur.val = cur.val + curSum;
-
-            if (l1!=null) {
+        ListNode curNode = result;
+        int addVal = 0;
+        while(true) {
+            int sum = 0;
+            sum = sum + addVal;
+            addVal = 0;
+            if (l1 != null) {
+                sum = sum + l1.val;
                 l1 = l1.next;
             }
 
-            if (l2!=null) {
+            if (l2 != null) {
+                sum = sum + l2.val;
                 l2 = l2.next;
             }
 
-            if (l1!=null || l2!=null) {
-                cur.next = new ListNode(jinwei);
-                cur = cur.next;
+            if (sum >= 10) {
+                sum = sum - 10;
+                addVal = 1;
             }
 
+            curNode.val = sum;
+            if (l1==null && l2==null) {
+                break;
+            }
+
+            curNode.next = new ListNode(0);
+            curNode = curNode.next;
         }
-        return result;
+        System.out.println(JsonUtil.toString(result));
     }
 
     /*

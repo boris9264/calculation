@@ -24,6 +24,33 @@ public class Solution {
     */
 
     @Test
+    public void run1() {
+        int[] result = null;
+        Map<Integer, Integer> numMap = new HashMap<>();
+        int[] nums = new int[]{2, 7, 11, 15};
+        int target = 9;
+        for (int i = 0; i < nums.length; i++) {
+            numMap.put(nums[i], i);
+            if (numMap.containsKey(target-nums[i])) {
+                result = new int[]{numMap.get(target-nums[i]), i};
+            }
+        }
+        System.out.println(JsonUtil.toString(result));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Test
     public void run() {
         int[] nums = new int[]{2, 11, 7, 15};
         int[] result = twoSum1(nums, 9);
